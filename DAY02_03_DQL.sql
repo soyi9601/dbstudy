@@ -106,13 +106,13 @@ SELECT *
 
 -- 9. 사원 테이블에서 '한'씨를 조회하시오.
 SELECT *
-FROM EMPLOYEE_T
-WHERE NAME LIKE '한%';
+  FROM EMPLOYEE_T
+ WHERE NAME LIKE '한%';
 
 -- 10. 사원 테이블에서 9월달에 입사한 사원을 조회하시오.
 SELECT *
-FROM EMPLOYEE_T
-WHERE HIRE_DATE LIKE '%/09/%';
+  FROM EMPLOYEE_T
+ WHERE HIRE_DATE LIKE '%/09/%';
 
 
 
