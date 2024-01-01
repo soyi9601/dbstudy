@@ -2,6 +2,9 @@
 -- 사번 근무개월수
 -- 100  246
 -- 101  219
+SELECT EMPLOYEE_ID AS 사번
+     , FLOOR(MONTHS_BETWEEN(SYSDATE, HIRE_DATE)) AS 근무개월수
+  FROM EMPLOYEES;
 
  
  -- 2. 직업은 "분야_직급" 형식으로 되어 있다. 예) PU_MAN : 분야(PU), 직급(MAN)
@@ -13,6 +16,11 @@ SELECT JOB_ID
      , SUBSTR(JOB_ID, 1, 2) AS 분야
      , SUBSTR(JOB_ID, 4) AS 직급
   FROM EMPLOYEES;
+  
+SELECT JOB_ID
+     , SUBSTR(JOB_ID, 1, INSTR(JOB_ID, '_') - 1) AS 분야
+     , SUBSTR(JOB_ID, INSTR(JOB_ID, '_') + 1) AS 직급
+  FROM EMPLOYEES;
 
 
 -- 3. FIRST_NAME과 LAST_NAME을 연결한 뒤 모두 대문자로 바꾼 이름을 조회하시오.
@@ -21,6 +29,11 @@ SELECT JOB_ID
 -- 101  NEENA KOCHHAR
 SELECT UPPER(FIRST_NAME || LAST_NAME)
   FROM EMPLOYEES;
+  
+SELECT EMPLOYEE_ID AS 사번
+     , UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) AS 이름
+  FROM EMPLOYEES
+ ORDER BY EMPLOYEE_ID;
 
 
 -- 4. 사원들이 고용된 순서대로 순위를 매긴 뒤 조회하시오.
